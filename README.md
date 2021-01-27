@@ -1,5 +1,7 @@
 <h1>STUDENT PHYSICAL STATISTICS RECORDSYSTEM</h1>
 
+<h3>Purpose</h3>
+
 Our college’s Physical Education department customarily organize and carry out physical
 activities for students of different departments by following a weekly schedule, besides that the
 Physical Education department also collects student’s anthropometrical data, examines it and
@@ -16,3 +18,10 @@ Department so they can preserve records of all student’s anthropometric data l
 BMI, and age in an easily accessible way, insert records when obligatory, generate individual
 student progress reports with faculty’s personal feedback, visualize the records into graphs to get
 better insights and view student’s formal feedbacks and suggestions. 
+
+<h3>Technologies Used</h3>
+<ul>
+  <li>Django</li>
+  <li>HTML, CSS, JS</li>
+  <li>SqLite</li>
+</ul>

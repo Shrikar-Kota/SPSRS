@@ -1,0 +1,31 @@
+	<nav class="navbar navbar-inverse" style="border-bottom: 10px solid rgb(194, 192, 192);position: fixed;top: 0;width: 100%;z-index: 1000;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="https://www.cbit.ac.in/">CBIT</a>
+			</div>
+				{% if request.user.is_authenticated and request.user.is_admin %}
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="{% url 'feedback_insights' %}"><span class="glyphicon glyphicon-list-alt"></span> Feedbacks</a></li>
+					<li><a href="{% url 'bmi_insights' %}"><span class="glyphicon glyphicon-signal"></span> Insights</a></li>
+					<li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+					<li><a href="{% url 'change_password' %}"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
+					<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+				{% else %}
+					{% if request.user.is_authenticated %}
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="{% url 'student' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+						<li><a href="{% url 'feedback' %}"><span class="glyphicon glyphicon-edit"></span> Feedback</a></li>
+						<li><a href="{% url 'change_password' %}"><span class="glyphicon glyphicon-lock"></span> Change Password</a></li>
+						<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+					</ul>
+					{% else %}
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+						<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					</ul>
+					{% endif %}
+				{% endif %}
+		</div>
+	</nav>

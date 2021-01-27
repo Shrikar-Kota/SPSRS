@@ -1,0 +1,42 @@
+
+html,
+body {
+	height: 100%;
+}
+.form-container
+{
+	background-color: #fff;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 20px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);	
+}
+
+#submitted-form{
+	border-radius: 5px;
+	width: 50%;
+	position : absolute;  
+    left     : 0;
+	top      : 50%;
+	right: 0;
+    margin-left : -100px; /* half of the width  */
+    margin-top  : -100px; /* half of the height */
+	margin: auto;
+	font-size: 30px;
+	text-align: left;
+	padding: 10px 5px 5px 10px;
+	height: 70px;
+}
+
+#successful-form{
+	border-radius: 5px;
+	width: 50%;
+	position : absolute;  
+    left     : 0;
+	top      : 50%;
+	right: 0;
+    margin-left : -100px; /* half of the width  */
+    margin-top  : -100px; /* half of the height */
+	margin: auto;
+	font-size: 30px;
+	text-align: left;
+	padding: 10px 5px 5px 10px;
+	height: 70px;
+}

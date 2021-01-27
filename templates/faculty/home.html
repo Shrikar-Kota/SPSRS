@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+	{% block title %}
+		<title>SPSRS faculty</title>S
+	{% endblock title %}
+{% block content%}
+<div style="margin-top: 50px;font-weight: bolder;" align = 'right'>
+	{% if request.user.previous_login %}
+		<span style="color: black;font-size: 20px;">Welcome {{request.user}}.</span><p style="color: rgb(168, 168, 168);margin-top: 10px;">Last Login: {{request.user.previous_login}} </p>
+	{% else %}
+		<span style="color: black;font-size: 20px;">Welcome {{request.user}}.</span><p style="color: rgb(168, 168, 168);margin-top: 10px;">Last Login: {{request.user.last_login}} </p>
+	{% endif %}
+	<hr style='height: 2px; background-color: black;'>
+</div>
+<form method="GET">
+	<div class="container" style="margin-top: 20px;margin-bottom: 20px;border: 1px solid black;padding: 10px 10px 0px 10px;width: 50%;height: 10%;">
+		<div style = 'font-size: 20px;margin-bottom: 20px;' align = 'center'>GET DETAILS</div>
+		<div class="row">
+			<div class="col-sm-12 form-group">
+				<div class="row">
+					<div class="col-sm-6 form-group">
+						<label for='section'>Section <span style="color: red;">*</span></label><p></p>
+						<select class='form-control' id='section' name='section'>
+							<option></option>
+							<option value="C1">CSE-1</option>
+							<option value="C2">CSE-2</option>
+							<option value="C3">CSE-3</option>
+							<option value="E1">ECE-1</option>
+							<option value="E2">ECE-2</option>
+							<option value="E3">ECE-3</option>
+							<option value="J1">EEE-1</option>
+							<option value="J2">EEE-2</option>
+							<option value="I1">IT-1</option>
+							<option value="I2">IT-2</option>
+							<option value="I3">IT-3</option>
+							<option value="A1">MECH-1</option>
+							<option value="A2">MECH-2</option>
+							<option value="D1">CIVIL-1</option>
+							<option value="D2">CIVIL-2</option>
+							<option value="P">PROD</option>
+							<option value="K">CHEM-1</option>
+							<option value="B">BIOTECH</option>
+							<option value="L">MBA</option>
+							<option value="M">MTECH</option>
+							<option value="N">MCA</option>
+						</select>	
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for='year'>Year <span style="color: red;">*</span></label><p></p>
+						<select class='form-control' id='year' name='year'>
+							<option></option>
+							<option value="1st">First year</option>
+							<option value="2nd">Second year</option>
+							<option value="3rd">Third year</option>
+							<option value="4th">Fourth year</option>
+						</select>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<label>Filter </label>
+						<p>
+							<label class="checkbox-inline">
+								<input type="checkbox" name="weight_one" id="radio_experience" value="True" >
+								1st record pending
+							</label>
+							<label class="checkbox-inline">
+								<input type="checkbox" name="weight_two" id="radio_experience" value="True" >
+								2nd record pending
+							</label>
+							<label class="checkbox-inline">
+								<input type="checkbox" name="feedback" id="radio_experience" value="True" >
+								Feedback not given
+							</label>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 form-group">
+						<button type="submit" class="btn btn-success" >Get </button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+{% if status %}
+<div style = "width: 70%; margin-right: auto;margin-left:auto;border: 1px solid black;">
+	<div style='font-size: 20px;margin-top: 10px;margin-bottom: 20px' align='center'>STUDENT DATA</div>
+	<table class="table table-striped" border="2" style="font-size: 10px;width: 90%;margin-left:auto;margin-right:auto;margin-bottom: 20px;">
+    	<thead>
+    		<th>Rollno</th>
+    		<th>Name</th>
+    		<th>Section</th>
+    		<th>Age</th>
+    		<th>Height 1</th>
+    		<th>Weight 1</th>
+    		<th>BMI 1</th>
+    		<th>Height 2</th>
+    		<th>Weight 2</th>
+    		<th>BMI2</th>
+    		<th>Update One</th>
+    		<th>Update Two</th>
+            <th>Feedback</th>
+		</thead>
+		{% for std in obj %}
+		<tbody>
+			<tr>
+				<td>{{std.rollno}}</td>
+				<td>{{std.name}}</td>
+				<td>{{std.section}}</td>
+				<td>{{std.age}}</td>
+				<td>{{std.height_one}}</td>
+				<td>{{std.weight_one}}</td>
+				<td>{{std.bmi1}}</td>
+				<td>{{std.height_two}}</td>
+				<td>{{std.weight_two}}</td>
+				<td>{{std.bmi2}}</td>
+				<td><a href="update1/{{std.rollno}}" >Edit</a></td>				
+				<td><a href="update2/{{std.rollno}}" >Edit</a></td>
+				<td><a href="fb_student/{{std.rollno}}" >Edit</a></td>
+			</tr>
+		</tbody>
+		{% endfor %}
+    </table>
+{% endif %}
+</div>
+			  
+{% endblock content %}

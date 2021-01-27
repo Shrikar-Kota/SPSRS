@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+	{% block title %}
+		<title>SPSRS student</title>S
+	{% endblock title %}
+{% block content %}
+	<div style="margin-top: 50px;font-weight: bolder;" align = 'right'>
+		{% if request.user.previous_login %}
+			<span style="color: black;font-size: 20px;">Welcome {{request.user}}.</span><p style="color: rgb(168, 168, 168);margin-top: 10px;">Last Login: {{request.user.previous_login}} </p>
+		{% else %}
+			<span style="color: black;font-size: 20px;">Welcome {{request.user}}.</span><p style="color: rgb(168, 168, 168);margin-top: 10px;">Last Login: {{request.user.last_login}} </p>
+		{% endif %}
+		<hr style='height: 2px; background-color: black;'>
+	</div>
+	<div style="margin-top: 30px;margin-bottom: 30px;">
+		<div class="container" style="margin-top: 20px; width: 50%;border: 1px solid black;padding-top: 20px;border-radius: 2%;box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+		0 2px 4px rgba(0,0,0,0.07), 
+		0 4px 8px rgba(0,0,0,0.07), 
+		0 8px 16px rgba(0,0,0,0.07),
+		0 16px 32px rgba(0,0,0,0.07), 
+		0 32px 64px rgba(0,0,0,0.07);">
+			<h3 align='center' style="font-size: 20px;">REPORT CARD</h3>
+			<table class="table table-striped" border="2" style="font-size: 15px;">
+				{% for stud in student %}
+				<tbody>
+				  <tr>
+					  <td>
+						<strong>Name: </strong>
+					  </td>
+					  <td colspan = '2'>
+						{{stud.name}}
+					  </td>
+				  </tr>
+				  <tr>
+					  <td>
+						  <strong>Roll number: </strong>
+					  </td>
+					  <td colspan='2'>
+						  {{stud.rollno}}
+					  </td>
+				  </tr>
+				  <tr>
+					  <td>
+						  <b>Section: </b>
+					  </td>
+					  <td colspan="2">
+						  {{stud.section}}
+					  </td>
+				  </tr>
+				  <tr>
+					  <td>
+						  <b>Age: </b>
+					  </td>
+					  <td colspan="2">
+						  {{stud.age}}
+					  </td>
+				  </tr>
+				  <tr>
+					  <td colspan="3" align = 'center'><b>Odd Semester</b></td>
+				  </tr>
+				  <tr>
+					  <td>
+						  <b>Height</b>
+					  </td>
+					  <td>
+						  <b>Weight</b>
+					  </td>
+					  <td>
+						  <b>BMI</b>
+					  </td>
+				  </tr>
+				  <tr>
+					  <td>
+						{{stud.height_one}}
+					  </td>
+					  <td>
+						{{stud.weight_one}}
+					  </td>
+					  <td>
+						{{stud.bmi1}}
+					  </td>
+				  </tr>
+				  <tr>
+					<td colspan="3" align = 'center'><b>Even Semester</b></td>
+				</tr>
+				  <tr>
+					<td>
+						<b>Height</b>
+					</td>
+					<td>
+						<b>Weight</b>
+					</td>
+					<td>
+						<b>BMI</b>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						{{stud.height_two}}
+					</td>
+					<td>
+						{{stud.weight_two}}
+					</td>
+					<td>
+						{{stud.bmi2}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>Feedback: </b>
+					</td>
+					<td colspan="2">
+						{{stud.feedback}}
+					</td>
+				</tr>
+				</tbody>
+				{% endfor %}
+			  </table>
+		</div>
+	</div>	
+{% endblock content %}

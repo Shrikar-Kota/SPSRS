@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      {% block title %}
+    <title>Login</title>
+      {% endblock title %}
+    <!-- CSS -->
+    <link rel="stylesheet" href="{%static 'website/login/login_page.css' %}">
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <h2 class="active">Sign In</h2>
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="https://upload.wikimedia.org/wikipedia/en/6/68/Chaitanya_Bharathi_Institute_of_Technology_logo.png" id="icon" alt="User Icon" />
+          </div>
+
+          {% for error in login_form.errors %}
+            <div id='login-alert'>
+              Invalid Login or Password.
+            </div>
+          {% endfor %}
+          <!-- Login Form -->
+          <form method="POST" id='login_form'>
+            {% csrf_token %}
+            <input type="text" id="login" class="fadeIn second" name="rollno" placeholder="Roll number">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+      
+          <!-- Remind Password -->
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>
+        </div>
+    </div> 
+</body>
+</html>
+
+

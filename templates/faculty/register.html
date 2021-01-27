@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+	{% block title %}
+		<title>register</title>S
+	{% endblock title %}
+{% block content %}
+<form method="post">
+	<div class="container" style="margin-top: 100px;margin-bottom: 40px;">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 form-container">
+				{% if user_already_registered %}
+				<div class="alert alert-danger" style="margin-top: 20px;">
+					Looks like there is already an account on this roll number.
+				</div>
+				{% else %}
+					{% if user_created %}
+					<div class="alert alert-success" style="margin-top: 20px;">
+						User created successfully.
+					</div>
+					{% endif %}
+				{% endif %}
+				<h2 style="margin-top: 20px;">Student Registration form</h2> 
+				<p style="font-size: 12px;">Please note that all the fields marked with  <span style="color: red;">*</span> are mandatory.</p>
+				<form method="post">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<label for="rollno">Roll number <span style="color: red;">*</span></label>
+							<input type="text" class="form-control" id="rollno" name="rollno" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<label for="name">Name <span style="color: red;">*</span></label>
+							<input type="text" class="form-control" id="name" name="name" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<label for="dob">D.O.B. <span style="color: red;">*</span></label>
+							<input type="date" class="form-control" id="dob" name="dob" max={{today_date}} value={{today_date}} required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<label for='section'>Section <span style="color: red;">*</span></label><p></p>
+							<select class='form-control' id='section' name='section'>
+								<option value="C1" selected>CSE-1</option>
+								<option value="C2">CSE-2</option>
+								<option value="C2">CSE-3</option>
+								<option value="E1">ECE-1</option>
+								<option value="E2">ECE-2</option>
+								<option value="E3">ECE-3</option>
+								<option value="J1">EEE-1</option>
+								<option value="J2">EEE-2</option>
+								<option value="I1">IT-1</option>
+								<option value="I2">IT-2</option>
+								<option value="I3">IT-3</option>
+								<option value="A1">MECH-1</option>
+								<option value="A2">MECH-2</option>
+								<option value="D1">CIVIL-1</option>
+								<option value="D2">CIVIL-2</option>
+								<option value="P">PROD</option>
+								<option value="K">CHEM-1</option>
+								<option value="B">BIOTECH</option>
+								<option value="L">MBA</option>
+								<option value="M">MTECH</option>
+								<option value="N">MCA</option>
+							</select>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 form-group">
+							<label for='year'>Year <span style="color: red;">*</span></label><p></p>
+							<select class='form-control' id='year' name='year'>
+								<option value="1st" selected>First year</option>
+								<option value="2nd">Second year</option>
+								<option value="3rd">Third year</option>
+								<option value="4th">Fourth year</option>
+							</select>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 form-group">
+							<button type="submit" class="btn btn-lg btn-success btn-block" >Send </button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</form>
+{% endblock content%}
